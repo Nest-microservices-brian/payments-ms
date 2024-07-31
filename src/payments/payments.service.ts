@@ -7,7 +7,7 @@ import { PaymentSessionDto } from './dto/payment-session.dto';
 export class PaymentsService {
   private readonly stripe = new Stripe(envVars.STRIPE_SECRET);
 
-  async createPaumentSession(paymentSessionDto: PaymentSessionDto) {
+  async createPaymentSession(paymentSessionDto: PaymentSessionDto) {
     const { currency, items } = paymentSessionDto;
 
     const lineItems = items.map((item) => ({

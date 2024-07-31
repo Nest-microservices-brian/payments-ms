@@ -8,7 +8,7 @@ export class PaymentsController {
 
   @Post('create-payment-session')
   createPaymentSession(@Body() paymentSessionDto: PaymentSessionDto) {
-    return this.paymentsService.createPaumentSession(paymentSessionDto);
+    return this.paymentsService.createPaymentSession(paymentSessionDto);
   }
 
   @Get('success')
