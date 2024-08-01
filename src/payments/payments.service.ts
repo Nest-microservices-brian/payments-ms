@@ -1,6 +1,6 @@
 import { HttpStatus, Injectable } from '@nestjs/common';
-import { envVars } from 'src/config';
 import Stripe from 'stripe';
+import { envVars } from 'src/config';
 import { PaymentSessionDto } from './dto/payment-session.dto';
 import { Request, Response } from 'express';
 
@@ -32,7 +32,11 @@ export class PaymentsService {
       cancel_url: envVars.STRIPE_CANCEL_URL,
     });
 
-    return session;
+    return {
+      cancelUrl: session.cancel_url,
+      successUrl: session.success_url,
+      url: session.url,
+    };
   }
 
   async stripeWebhook(req: Request, res: Response) {
